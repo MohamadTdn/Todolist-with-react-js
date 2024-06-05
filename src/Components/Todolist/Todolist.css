@@ -8,6 +8,7 @@
     margin: 10px;
     border-radius: 10px;
     border: none;
+    width: 300px;
 }
 
 .submit-btn {
@@ -22,4 +23,45 @@
     background-color: #fff;
     color: #000000;
     transition: 0.25s;
+}
+
+.Todos {
+    list-style-type: none;
+}
+
+.Todo {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    color: #000000;
+    width: 400px;
+    margin: 20px auto;
+}
+
+.Todo-title {
+    padding: 6px;
+}
+
+.Done-btn {
+    padding: 8px;
+    border: none;
+    background-color: #008000;
+    color: #fff;
+}
+
+.Delete-btn {
+    padding: 8px;
+    border: none;
+    background-color: #d41616;
+    color: #fff;
+}
+
+.Done-btn:hover , .Delete-btn:hover {
+    background-color: #fff;
+    color: #000000;
+    transition: 0.25s;
+}
+
+.Filter {
+    padding: 10px 20px;
 }

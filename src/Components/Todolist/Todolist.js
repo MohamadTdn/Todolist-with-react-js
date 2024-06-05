@@ -5,12 +5,12 @@ import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function Todolist() {
 
-  let [todos, setTodo] = useState ([])
-
+  const [todos, setTodo] = useState ([])
+  
   return (
     <div className='Todo-list'>
       <form action="#" id='Todo-form'>
-        <input type="text" className='Todo-input' placeholder='Enter the Todo' />
+        <input  type="text" className='Todo-input' placeholder='Enter the Todo' />
         <input type="submit" className='submit-btn' value="Add" />
       </form>
       <select className='Filter'>
@@ -19,6 +19,8 @@ export default function Todolist() {
         <option value="Incomplete">Incomplete</option>
       </select>
       <ul className='Todos'>  
+      {todos.map(todo => {
+        return (
         <li className='Todo'>
           <span className='Todo-title'>Test todo</span>
           <div>
@@ -26,20 +28,8 @@ export default function Todolist() {
             <button className='Delete-btn'><FaRegTrashAlt/></button>
           </div>
         </li>
-        <li className='Todo'>
-          <span className='Todo-title'>Test todo</span>
-          <div>
-            <button className='Done-btn'><MdDone/></button>
-            <button className='Delete-btn'><FaRegTrashAlt/></button>
-          </div>
-        </li>
-        <li className='Todo'>
-          <span className='Todo-title'>Test todo</span>
-          <div>
-            <button className='Done-btn'><MdDone/></button>
-            <button className='Delete-btn'><FaRegTrashAlt/></button>
-          </div>
-        </li>
+        )
+      })}
       </ul>
     </div>
   )

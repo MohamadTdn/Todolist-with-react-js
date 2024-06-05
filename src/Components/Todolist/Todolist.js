@@ -1,9 +1,12 @@
-import React from 'react'
+import React , {useState} from 'react'
 import './Todolist.css'
 import { MdDone } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function Todolist() {
+
+  let [todos, setTodo] = useState ([])
+
   return (
     <div className='Todo-list'>
       <form action="#" id='Todo-form'>

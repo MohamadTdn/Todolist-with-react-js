@@ -63,6 +63,16 @@ export default function Todolist() {
     })
   }
 
+  const removeTodoHandler = (todoId) => {
+    let finalyTodoList = [...todos]
+
+    let targetTodoIndex = finalyTodoList.findIndex(todo => {
+      return todo.id === todoId
+    })
+
+    console.log(targetTodoIndex);
+  }
+
   return (
     <div className='Todo-list'>
       <form onSubmit={addTodo} action="#" id='Todo-form'>
@@ -81,7 +91,7 @@ export default function Todolist() {
           <span className='Todo-title'>{todo.title}</span>
           <div>
             <button onClick={() => completedHandler(todo.id)} className='Done-btn'><MdDone/></button>
-            <button className='Delete-btn'><FaRegTrashAlt/></button>
+            <button onClick={() => removeTodoHandler(todo.id)} className='Delete-btn'><FaRegTrashAlt/></button>
           </div>
         </li>
         )

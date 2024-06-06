@@ -68,3 +68,9 @@
     padding: 10px 20px;
     transition: 0.5s;
 }
+
+.done {
+    text-decoration: line-through;
+    opacity: 0.4;
+    transition: 0.25s;
+}

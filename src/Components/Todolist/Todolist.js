@@ -5,12 +5,68 @@ import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function Todolist() {
 
-  const [todos, setTodo] = useState ([])
-  
+  const [todos, setTodos] = useState([])
+  const [todoTitle, setTodoTitle] = useState('')
+  const [status, setStatus] = useState('All')
+
+  const todoTitleHandler = (e) => {
+    setTodoTitle(
+      prevState => {
+        return prevState = e.target.value
+      }
+    )
+  }
+
+  const addTodo = (e) => {
+    e.preventDefault()
+
+    let newTodoList = [...todos]
+
+    let newTodo = {
+      id: todos.length + 1,
+      title: todoTitle,
+      completed: false
+    }
+
+    newTodoList.push(newTodo)
+
+    setTodos(
+      prevState => {
+        return prevState = newTodoList
+      }
+    )
+
+    setTodoTitle(
+      prevState => {
+        return prevState = ""
+      }
+    )
+  }
+
+  const completedHandler = (todoId) => {
+    let updatedTodos = [...todos]
+
+    updatedTodos.forEach(todo => {
+      if (todo.id === todoId) {
+        if (todo.completed === false) {
+          todo.completed = true
+        } else {
+          todo.completed = false
+        }
+      }
+
+      setTodos (
+        prevState => {
+          return prevState = updatedTodos
+        }
+      )
+    })
+  }
+
   return (
     <div className='Todo-list'>
-      <form action="#" id='Todo-form'>
-        <input  type="text" className='Todo-input' placeholder='Enter the Todo' />
+      <form onSubmit={addTodo} action="#" id='Todo-form'>
+        <input onChange={todoTitleHandler} value={todoTitle} type="text" className='Todo-input' placeholder='Enter the Todo' />
         <input type="submit" className='submit-btn' value="Add" />
       </form>
       <select className='Filter'>
@@ -21,10 +77,10 @@ export default function Todolist() {
       <ul className='Todos'>  
       {todos.map(todo => {
         return (
-        <li className='Todo'>
-          <span className='Todo-title'>Test todo</span>
+        <li key={todo.id} className={todo.completed === false ? 'Todo' : 'Todo done'}>
+          <span className='Todo-title'>{todo.title}</span>
           <div>
-            <button className='Done-btn'><MdDone/></button>
+            <button onClick={() => completedHandler(todo.id)} className='Done-btn'><MdDone/></button>
             <button className='Delete-btn'><FaRegTrashAlt/></button>
           </div>
         </li>

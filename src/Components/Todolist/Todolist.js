@@ -70,7 +70,13 @@ export default function Todolist() {
       return todo.id === todoId
     })
 
-    console.log(targetTodoIndex);
+    finalyTodoList.splice(targetTodoIndex, 1)
+
+    setTodos(
+      prevState => {
+        return prevState = finalyTodoList
+      }
+    )
   }
 
   return (
